@@ -30,3 +30,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Rust target
+contracts/target
+target
+.stellar
+.soroban
