@@ -11,6 +11,7 @@ const AJO_REPO = "https://github.com/Savioula23/ajo-stellar";
 const AJO_CONTRACT = "CD3DQJD4NVU2OHGM4LTRUMJAH6XK2LFGGE3ZRZTRUH7XJ37VZ4K36BFT";
 const DROP_REPO = "https://github.com/jedi-dtechmaker/stellar-hackathon";
 const DROP_BOT = "https://t.me/StellarDropBot";
+const DROP_APP = "https://stellardrop.netlify.app";
 const SIP_REPO = "https://github.com/official-papi/promptsip-stellar-gateway";
 const SIP_CONTRACT = "CB2U4ZI42D4NVHUXKG4ZZRAOYESU65QIWY47EZX5HMRQVJMDKAKWAK2N";
 const SIP_DEPLOY_TX = "9b421221df7ed238f996a93e78fadf8c0daa4d5b84d034564dfa438352033c61";
@@ -19,6 +20,8 @@ const expertContract = (id: string) => `https://stellar.expert/explorer/testnet/
 const expertTx = (h: string) => `https://stellar.expert/explorer/testnet/tx/${h}`;
 const short = (s: string) => `${s.slice(0, 6)}…${s.slice(-4)}`;
 const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const ICONS = { ajo: "◎", drop: "➤", promptsip: "⌁" } as const;
 
 const PRODUCTS = {
   ajo: { name: "Ajo", verb: "Save", color: "var(--ajo)", soft: "var(--ajo-soft)", line: "Rotating savings circles with no treasurer to trust." },
@@ -55,13 +58,17 @@ export function Suite() {
 
 function Mark() {
   return (
-    <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" strokeWidth="2.5" />
-      <circle cx="16" cy="8.5" r="3.2" fill="var(--ajo)" />
-      <circle cx="22.5" cy="20" r="3.2" fill="var(--drop)" />
-      <circle cx="9.5" cy="20" r="3.2" fill="var(--sip)" />
-    </svg>
+    <span className="grid h-[35px] w-[35px] place-items-center rounded-[10px]" style={{ background: "var(--foreground)", color: "var(--lime)" }} aria-hidden="true">
+      <svg width="21" height="21" viewBox="0 0 32 32">
+        <circle cx="16" cy="9" r="4" fill="currentColor" />
+        <circle cx="22.5" cy="20.5" r="4" fill="currentColor" fillOpacity="0.75" />
+        <circle cx="9.5" cy="20.5" r="4" fill="currentColor" fillOpacity="0.5" />
+      </svg>
+    </span>
   );
+}
+function Wordmark() {
+  return <span className="whitespace-nowrap text-[24px] font-bold tracking-[-1.1px]">stel<span className="font-normal">suite</span><span className="font-black" style={{ color: "#81ab41" }}>.</span></span>;
 }
 
 function Nav({ page }: { page: Page }) {
@@ -69,10 +76,9 @@ function Nav({ page }: { page: Page }) {
   const links: [Page, string][] = [["ajo", "Ajo"], ["drop", "StellarDrop"], ["promptsip", "PromptSip"], ["verify", "Verify"]];
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="wrap flex h-16 items-center justify-between gap-6">
+      <div className="wrap flex h-20 items-center justify-between gap-6">
         <a href="#home" className="flex items-center gap-2.5 text-foreground no-underline" onClick={() => setOpen(false)}>
-          <Mark />
-          <span className="font-display text-lg font-extrabold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>stelsuite</span>
+          <Mark /><Wordmark />
         </a>
         <nav className="hidden items-center gap-1 md:flex" aria-label="Products">
           {links.map(([p, label]) => (
@@ -82,11 +88,11 @@ function Nav({ page }: { page: Page }) {
             </a>
           ))}
         </nav>
-        <div className="hidden md:block"><a className="btn btn-ink btn-sm" href={AJO_APP} target="_blank" rel="noreferrer">Open Ajo app</a></div>
+        <div className="hidden items-center gap-3 md:flex"><span className="badge">Stellar Testnet</span><a className="btn btn-ink btn-sm" href={AJO_APP} target="_blank" rel="noreferrer">Open Ajo app</a></div>
         <button className="btn btn-line btn-sm md:hidden" aria-expanded={open} aria-controls="m-nav" onClick={() => setOpen(!open)}>{open ? "Close" : "Menu"}</button>
       </div>
       {open && (
-        <nav id="m-nav" className="fixed inset-x-0 top-16 bottom-0 z-50 flex flex-col gap-2 bg-background p-6 md:hidden" aria-label="Products">
+        <nav id="m-nav" className="fixed inset-x-0 top-20 bottom-0 z-50 flex flex-col gap-2 bg-background p-6 md:hidden" aria-label="Products">
           {links.map(([p, label]) => (
             <a key={p} href={`#${p}`} onClick={() => setOpen(false)} className="border-b border-border py-4 text-2xl font-bold text-foreground no-underline" style={{ fontFamily: "var(--font-display)" }}>{label}</a>
           ))}
@@ -101,7 +107,7 @@ function Footer() {
   return (
     <footer className="border-t border-border">
       <div className="wrap flex flex-wrap items-center justify-between gap-4 py-8 text-sm text-muted-foreground">
-        <span className="flex items-center gap-2 text-foreground"><Mark /> <b style={{ fontFamily: "var(--font-display)" }}>stelsuite</b></span>
+        <span className="flex items-center gap-2 text-foreground"><Mark /> <Wordmark /></span>
         <span>Built for Boundless Build Day, Stellar Nigeria. All three products run on Stellar testnet with test money.</span>
       </div>
     </footer>
@@ -119,34 +125,42 @@ function Home() {
     <>
       <section className="wrap grid items-center gap-12 py-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16" style={{ minHeight: "var(--screen)" }} aria-labelledby="h1">
         <div>
-          <p className="eyebrow"><span className="live-dot" aria-hidden="true" /> Three products live on Stellar testnet</p>
-          <h1 id="h1" className="mt-5 text-[clamp(2.6rem,4.6vw+1rem,4.5rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">
-            Save, send and pay per use, on Stellar.
+          <p className="eyebrow">Save. Send. Pay per use.</p>
+          <h1 id="h1" className="mt-5 text-[clamp(50px,5.2vw,76px)] font-bold leading-[1.03]">
+            Everyday money,<br />on <Squiggle>Stellar.</Squiggle>
           </h1>
           <p className="lede mt-6">
             Stelsuite is everyday money for Nigeria: savings circles, Telegram cash transfers and pay-per-request AI,
             all settled in USDC on Stellar with fees under a cent.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a className="btn btn-ink" href="#products">See the products</a>
+            <a className="btn btn-ink" href="#products">See the products <span aria-hidden="true">↓</span></a>
             <a className="btn btn-line" href="#verify">Verify the contracts</a>
           </div>
         </div>
         <HeroStack />
       </section>
 
+      <div className="wrap">
+        <div className="trust">
+          <span style={{ letterSpacing: "0.14em" }}>THREE PRODUCTS. ONE SET OF RAILS.</span>
+          <span>⚡ Stellar speed</span><span>₦ Naira in and out</span><span>🔒 Contracts you can check</span>
+          <span style={{ letterSpacing: "0.14em" }}>✦ STELLAR</span>
+        </div>
+      </div>
+
       <section id="products" className="sec wrap" aria-labelledby="products-h">
         <h2 id="products-h">Three products, one set of Stellar rails</h2>
         <div className="grid gap-4 md:grid-cols-3">
-          {(Object.keys(PRODUCTS) as (keyof typeof PRODUCTS)[]).map((k) => {
+          {(Object.keys(PRODUCTS) as (keyof typeof PRODUCTS)[]).map((k, i) => {
             const p = PRODUCTS[k];
             return (
-              <a key={k} href={`#${k}`} className="card card-link flex flex-col gap-4 p-7 text-foreground no-underline">
-                <span className="tag" style={{ color: p.color }}>{p.verb}</span>
-                <h3 className="text-2xl font-extrabold tracking-tight">{p.name}</h3>
-                <p className="text-muted-foreground">{p.line}</p>
+              <a key={k} href={`#${k}`} className="card-link flex min-h-[300px] flex-col gap-4 rounded-[10px] border border-[#dde2d1] p-7 text-foreground no-underline" style={{ background: p.soft }}>
+                <span className="flex items-center justify-between"><span className="icon-box" aria-hidden="true">{ICONS[k]}</span><span className="num text-sm">0{i + 1}</span></span>
+                <h3 className="text-[26px] font-bold tracking-[-0.04em]">{p.name}</h3>
+                <p className="text-[15px]" style={{ color: "var(--ink-2)" }}>{p.line}</p>
                 <ProductGlyph kind={k} />
-                <span className="mt-auto text-[15px] font-semibold"><span className="uline">How {p.name} works</span> →</span>
+                <span className="card-foot mt-auto">{p.verb} <span aria-hidden="true">↗</span></span>
               </a>
             );
           })}
@@ -216,13 +230,23 @@ function Builder({ handle, product, what, color }: { handle: string; product: st
 
 function Close() {
   return (
-    <section className="adire-bg text-white" aria-labelledby="close-h">
+    <section className="lime-band" aria-labelledby="close-h">
       <div className="wrap grid justify-items-center gap-5 py-28 text-center">
-        <h2 id="close-h" className="h2" style={{ color: "inherit", maxWidth: "18ch" }}>Start with a savings circle today</h2>
-        <p className="max-w-[46ch] text-lg opacity-85">Ajo is the suite's live app: sign up with your fingerprint, set a contribution in naira and share a code.</p>
-        <a className="btn mt-2" style={{ background: "white", color: "var(--ajo)" }} href={AJO_APP} target="_blank" rel="noreferrer">Open Ajo app ↗</a>
+        <h2 id="close-h" className="h2" style={{ color: "inherit", maxWidth: "18ch" }}>Good money moves, on Stellar.</h2>
+        <p className="max-w-[46ch] text-lg" style={{ color: "var(--ink-2)" }}>Save with Ajo, send with StellarDrop, and pay per request with PromptSip.</p>
+        <div className="mt-2 flex flex-wrap justify-center gap-3">
+          <a className="btn btn-ink" href={AJO_APP} target="_blank" rel="noreferrer">Open Ajo ↗</a>
+          <a className="btn btn-line" style={{ borderColor: "#20281f40" }} href={DROP_APP} target="_blank" rel="noreferrer">Open StellarDrop ↗</a>
+        </div>
       </div>
     </section>
+  );
+}
+
+/* StellarDrop's hand-drawn underline. */
+function Squiggle({ children }: { children: ReactNode }) {
+  return (
+    <span className="squiggle">{children}<svg viewBox="0 0 470 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11 Q200 -2 466 9 M80 15 Q280 5 435 14" /></svg></span>
   );
 }
 
@@ -252,14 +276,16 @@ function ProductGlyph({ kind }: { kind: keyof typeof PRODUCTS }) {
 /* Hero: the three products' own screens, layered. */
 function HeroStack() {
   return (
-    <div className="mx-auto grid w-full max-w-[560px] gap-3" aria-label="Screens from Ajo, StellarDrop and PromptSip" role="img">
-      <div className="frame">
+    <div className="relative mx-auto grid w-full max-w-[560px] gap-4" aria-label="Screens from Ajo, StellarDrop and PromptSip" role="img">
+      <div className="orbit hidden lg:block" style={{ inset: "-30px -40px auto auto", width: 460, height: 460 }} aria-hidden="true" />
+      <div className="orbit hidden lg:block" style={{ inset: "auto auto -40px -50px", width: 300, height: 300 }} aria-hidden="true" />
+      <div className="frame tilt-l relative">
         <div className="frame-bar"><i /><i /><i /><span>ajo-stellar.vercel.app</span></div>
         <AjoMini />
       </div>
-      <div className="grid gap-3 sm:grid-cols-2">
-        <TelegramMini />
-        <TerminalMini />
+      <div className="relative grid gap-4 sm:grid-cols-2">
+        <div className="tilt-r"><TelegramMini /></div>
+        <div className="tilt-l"><TerminalMini /></div>
       </div>
     </div>
   );
@@ -367,8 +393,8 @@ function ProductHero({ kind, title, lede, actions, visual }: { kind: keyof typeo
   return (
     <section className="wrap grid items-center gap-12 py-10 lg:grid-cols-[1fr_1fr] lg:gap-16" style={{ minHeight: "var(--screen)" }} aria-labelledby={`${kind}-h1`}>
       <div>
-        <span className="eyebrow"><span className="h-2 w-2 rounded-full" style={{ background: p.color }} aria-hidden="true" /> {p.name} · {p.verb}</span>
-        <h1 id={`${kind}-h1`} className="mt-5 text-[clamp(2.4rem,3.8vw+1rem,4rem)] font-extrabold leading-[1] tracking-[-0.04em]">{title}</h1>
+        <span className="eyebrow">{p.name} · {p.verb}</span>
+        <h1 id={`${kind}-h1`} className="mt-5 text-[clamp(44px,4.4vw,68px)] font-bold leading-[1.03]">{title}</h1>
         <p className="lede mt-6">{lede}</p>
         <div className="mt-8 flex flex-wrap gap-3">{actions}</div>
       </div>
@@ -439,8 +465,8 @@ function DropPage() {
     <>
       <ProductHero kind="drop" title="Send USDC to anyone on Telegram."
         lede="StellarDrop turns a payment into a claim link. The recipient taps it in Telegram, gets a wallet without installing anything, and can cash out to a bank through the anchor."
-        actions={<><Ext href={DROP_BOT} className="btn btn-ink">Open the Telegram bot</Ext><Ext href={DROP_REPO}>Read the code</Ext></>}
-        visual={<TelegramMini />} />
+        actions={<><Ext href={DROP_APP} className="btn btn-ink">Open StellarDrop</Ext><Ext href={DROP_BOT}>Telegram bot</Ext></>}
+        visual={<div className="tilt-r mx-auto w-full max-w-[420px]"><TelegramMini /></div>} />
       <section className="sec wrap" aria-labelledby="drop-how">
         <h2 id="drop-how">From sender to bank account in four steps</h2>
         <Steps color="var(--drop)" items={[
@@ -610,12 +636,12 @@ function VerifyPage() {
     ["PromptSip", "Deployment transaction", SIP_DEPLOY_TX, expertTx(SIP_DEPLOY_TX)],
     ["PromptSip", "Initialisation transaction", SIP_INIT_TX, expertTx(SIP_INIT_TX)],
   ];
-  const repos: [string, string][] = [["Ajo", AJO_REPO], ["StellarDrop", DROP_REPO], ["PromptSip and this site", SIP_REPO]];
+  const repos: [string, string][] = [["Ajo app", AJO_APP], ["StellarDrop app", DROP_APP], ["Ajo code", AJO_REPO], ["StellarDrop code", DROP_REPO], ["PromptSip and this site", SIP_REPO]];
   return (
     <section className="wrap grid gap-12 py-16" style={{ minHeight: "var(--screen)" }} aria-labelledby="verify-h1">
       <div>
-        <span className="eyebrow">Verify</span>
-        <h1 id="verify-h1" className="mt-5 text-[clamp(2.4rem,3.8vw+1rem,4rem)] font-extrabold leading-[1] tracking-[-0.04em]">Every contract and repository</h1>
+        <span className="eyebrow">Verify it yourself</span>
+        <h1 id="verify-h1" className="mt-5 text-[clamp(44px,4.4vw,68px)] font-bold leading-[1.03]">Every contract and repository</h1>
         <p className="lede mt-6">All on Stellar testnet. Open any line on Stellar Expert to see the code and every call made to it.</p>
       </div>
       <div className="card overflow-hidden">
@@ -630,7 +656,7 @@ function VerifyPage() {
       <div className="grid gap-4 md:grid-cols-3">
         {repos.map(([n, href]) => (
           <a key={href} href={href} target="_blank" rel="noreferrer" className="card card-link p-6 text-foreground no-underline">
-            <span className="tag text-muted-foreground">Repository</span>
+            <span className="tag text-muted-foreground">{href.includes("github") ? "Repository" : "Live app"}</span>
             <h3 className="mt-2 text-lg font-bold">{n}</h3>
             <p className="num mt-2 break-all text-sm text-muted-foreground">{href.replace("https://", "")}</p>
           </a>
