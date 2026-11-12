@@ -9,21 +9,17 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition:
- * High-end institutional fintech design:
- * Clean crisp white surfaces, subtle slate foundation, refined emerald mint accents, zero gradients.
+ * Stelsuite design system: warm paper, deep ink, one accent per product.
+ * Ajo = adire indigo, StellarDrop = palm green, PromptSip = amber. Fonts match Ajo:
+ * Schibsted Grotesk (display), Geist (body), Geist Mono (numbers, code, addresses).
  */
 
 @theme inline {
-  --font-sans: "Times New Roman", Times, Georgia, serif;
-  --font-serif: "Times New Roman", Times, Georgia, serif;
-  --font-cursive: 'Caveat', 'Dancing Script', cursive;
-  --font-mono: 'JetBrains Mono', monospace;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -63,90 +59,182 @@
   --color-warning: var(--warning);
   --color-terminal: var(--terminal);
   --color-terminal-foreground: var(--terminal-foreground);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-display: Arial, Helvetica, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 :root {
-  --radius: 0.375rem;
-  
-  /* Mixture of clean white & subtle mint-white foundation */
-  --background: oklch(0.99 0.008 155); /* #F7FCF9 crisp white with delicate mint-green touch */
-  --foreground: oklch(0.16 0.035 160);  /* Deep forest slate for sharp legibility */
-  
-  /* Pure crisp white card surfaces */
-  --card: oklch(1 0 0);                 /* #FFFFFF pure crisp white */
-  --card-foreground: oklch(0.16 0.035 160);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.035 160);
-  
-  /* Signature Stellar Emerald Green */
-  --primary: oklch(0.52 0.16 155);      /* #059669 rich vibrant emerald green */
-  --primary-foreground: oklch(1 0 0);   /* #FFFFFF pure white text on primary */
-  
-  /* Fresh mint-white secondary surfaces */
-  --secondary: oklch(0.96 0.03 155);    /* #ECFDF5 soft mint white */
-  --secondary-foreground: oklch(0.24 0.08 155); /* Deep emerald text */
-  --muted: oklch(0.97 0.015 155);       /* Subtle pale mint white */
-  --muted-foreground: oklch(0.42 0.03 160); /* Clean readable slate-green */
-  --accent: oklch(0.94 0.04 155);       /* Fresh mint hover state */
-  --accent-foreground: oklch(0.20 0.08 155);
-  --destructive: oklch(0.55 0.20 25);
-  --destructive-foreground: oklch(1 0 0);
-  
-  /* Crisp 1px solid green-white borders */
-  --border: oklch(0.91 0.025 155);      /* Delicate crisp mint-green border */
-  --input: oklch(0.91 0.025 155);
-  --ring: oklch(0.52 0.16 155);
-  
-  --chart-1: oklch(0.52 0.16 155);
-  --chart-2: oklch(0.58 0.12 215);
-  --chart-3: oklch(0.65 0.14 85);
-  --chart-4: oklch(0.55 0.15 25);
-  --chart-5: oklch(0.55 0.10 300);
-  
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.16 0.035 160);
-  --sidebar-primary: oklch(0.52 0.16 155);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.96 0.03 155);
-  --sidebar-accent-foreground: oklch(0.24 0.08 155);
-  --sidebar-border: oklch(0.91 0.025 155);
-  --sidebar-ring: oklch(0.52 0.16 155);
-  
-  /* Signal: White-infused mint pill with deep emerald accent */
-  --signal: oklch(0.52 0.16 155);       /* #059669 executive emerald */
-  --signal-soft: oklch(0.96 0.035 155); /* #ECFDF5 soft mint white */
-  --signal-foreground: oklch(1 0 0);    /* #FFFFFF pure white */
-  --warning: oklch(0.70 0.14 85);
-  
-  /* Sleek dark code block contrast on white cards */
-  --terminal: oklch(0.15 0.025 160);    /* #0B1F17 deep dark forest slate for code */
-  --terminal-foreground: oklch(0.96 0.01 155);
+  /* StellarDrop's palette and type, shared across the suite. */
+  --radius: 7px;
+  --background: #fafaf5;
+  --foreground: #20281f;
+  --card: #ffffff;
+  --card-foreground: #20281f;
+  --popover: #ffffff;
+  --popover-foreground: #20281f;
+  --primary: #20281f;
+  --primary-foreground: #ffffff;
+  --secondary: #efeee7;
+  --secondary-foreground: #20281f;
+  --muted: #efeee7;
+  --muted-foreground: #6b7266;
+  --accent: #efeee7;
+  --accent-foreground: #20281f;
+  --destructive: #b42318;
+  --destructive-foreground: #ffffff;
+  --border: #e4e7dc;
+  --input: #dde2d1;
+  --ring: #416735;
+  --chart-1: #416735;
+  --chart-2: #86a951;
+  --chart-3: #9a6b1f;
+  --chart-4: #b42318;
+  --chart-5: #6b7266;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #20281f;
+  --sidebar-primary: #20281f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #efeee7;
+  --sidebar-accent-foreground: #20281f;
+  --sidebar-border: #e4e7dc;
+  --sidebar-ring: #416735;
+  --signal: #416735;
+  --signal-soft: #e3f2c9;
+  --signal-foreground: #ffffff;
+  --warning: #9a6b1f;
+  --terminal: #20281f;
+  --terminal-foreground: #f4f7ec;
+
+  --paper-2: #efeee7;
+  --line-strong: #dde2d1;
+  --ink-2: #3c4a31;
+  --ink-3: #6b7266;
+  --lime: #d1f18b;
+  --lime-bright: #c4ee70;
+  --green: #416735;
+  --ok: #416735;
+  --ok-soft: #e3f2c9;
+  /* One of StellarDrop's card colours per product */
+  --ajo: #5b4e8c;
+  --ajo-soft: #eae6f2;
+  --drop: #416735;
+  --drop-soft: #e3f2c9;
+  --sip: #8a5a12;
+  --sip-soft: #efeee7;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --screen: calc(100svh - 80px);
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: "Times New Roman", Times, Georgia, serif;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    letter-spacing: 0.01em;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
+  h1, h2, h3 { font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-wrap: balance; }
+  h1 { letter-spacing: -0.055em; }
+  h2 { letter-spacing: -0.045em; }
+  p { text-wrap: pretty; }
+  code, pre, kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Times New Roman", Times, Georgia, serif;
-  }
+@layer components {
+  .wrap { width: 100%; max-width: 1160px; margin-inline: auto; padding-inline: 16px; }
+  @media (min-width: 640px) { .wrap { padding-inline: 24px; } }
 
-  /* Dedicated class when cursive accent or signature flourish is needed */
-  .font-cursive {
-    font-family: 'Caveat', 'Dancing Script', cursive !important;
-  }
+  /* Buttons: one pair, they step on hover and press on click. */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 7px; font-weight: 600; font-size: 14px; border: 1px solid transparent; transition: transform 160ms var(--ease), background-color 160ms, border-color 160ms; white-space: nowrap; cursor: pointer; text-decoration: none; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(1px); }
+  .btn-ink { background: var(--foreground); color: #fff; }
+  .btn-ink:hover { background: var(--ink-2); }
+  .btn-line { background: transparent; color: var(--foreground); border-color: var(--line-strong); }
+  .btn-lime { background: var(--lime); color: var(--foreground); border-color: #b9d975; }
+  .btn-lime:hover { background: var(--lime-bright); }
+  .btn-line:hover { background: var(--paper-2); }
+  .btn-sm { min-height: 36px; padding: 0 14px; font-size: 14px; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-  code, pre, kbd, .font-mono, .font-mono * {
-    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
-  }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--foreground); }
+  .eyebrow::before { content: "\2733"; color: #86a951; font-size: 14px; letter-spacing: 0; }
+  .eyebrow.plain::before { content: none; }
+  .badge { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; color: #627446; background: #f4f7ec; border: 1px solid #dfe6d2; border-radius: 20px; padding: 7px 12px; font-size: 12px; }
+  .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #86a951; }
+  .squiggle { position: relative; display: inline-block; white-space: nowrap; }
+  .squiggle svg { position: absolute; left: 0; bottom: -0.1em; width: 100%; height: 0.26em; overflow: visible; }
+  .squiggle path { fill: none; stroke: var(--lime-bright); stroke-width: 6; stroke-linecap: round; }
+  .trust { border-block: 1px solid var(--border); color: #7d8573; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 28px; padding-block: 22px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; }
+  .tilt-l { transform: rotate(-2.5deg); }
+  .tilt-r { transform: rotate(3deg); }
+  .tilt-l, .tilt-r { transition: transform 260ms var(--ease); }
+  .tilt-l:hover, .tilt-r:hover { transform: rotate(0deg) translateY(-2px); }
+  @media (max-width: 640px) { .tilt-l, .tilt-r { transform: none; } }
+  .orbit { position: absolute; border: 1px solid #e7e9df; border-radius: 50%; pointer-events: none; }
+  .icon-box { display: inline-grid; place-items: center; width: 47px; height: 47px; border-radius: 12px; background: #ffffff70; border: 1px solid #ffffff; color: var(--ink-2); font-size: 20px; }
+  .card-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #485b2820; padding-top: 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); animation: ping 2.5s var(--ease) infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--ok) 55%, transparent); } 70%, 100% { box-shadow: 0 0 0 8px transparent; } }
+
+  .tag { font: 700 11px/1 Arial, Helvetica, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; }
+  .num { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+
+  /* Sections: one idea per screen, heading first. */
+  .sec { min-height: var(--screen); display: grid; align-content: center; gap: 48px; padding-block: 88px; border-top: 1px solid var(--border); }
+  .sec h2, .h2 { font-size: clamp(2.1rem, 2.8vw + 1.2rem, 3.25rem); font-weight: 700; line-height: 1.03; letter-spacing: -0.05em; max-width: 20ch; }
+  .lede { font-size: 18px; line-height: 1.55; color: var(--ink-2); max-width: 52ch; }
+  @media (max-width: 900px) { .sec { min-height: 0; padding-block: 64px; } }
+
+  /* Cards: one family; a linked card lifts 2px. */
+  .card { background: var(--card); border: 1px solid #dde2d1; border-radius: 10px; }
+  .card-link { transition: transform 200ms var(--ease), border-color 200ms, box-shadow 200ms; }
+  .card-link:hover { transform: translateY(-2px); border-color: var(--line-strong); box-shadow: 0 18px 40px -24px color-mix(in oklch, var(--foreground) 30%, transparent); }
+
+  .uline { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size 220ms var(--ease); text-decoration: none; }
+  .uline:hover { background-size: 100% 1px; }
+
+  /* App frames: the products' own UI as live HTML. */
+  .frame { background: var(--card); border: 1px solid #e0e5d8; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 0 var(--border), 0 30px 70px -36px color-mix(in oklch, var(--foreground) 40%, transparent); }
+  .frame-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--paper-2); }
+  .frame-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
+  .frame-bar span { margin-left: 8px; font: 12px ui-monospace, monospace; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; background: var(--paper-2); color: var(--ink-2); transition: background-color 220ms, color 220ms; }
+  .pill-ok { background: var(--ok-soft); color: var(--ok); }
+  .pill-warn { background: var(--sip-soft); color: var(--sip); }
+  .pill-ajo { background: var(--ajo-soft); color: var(--ajo); }
+
+  .avatar { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font-size: 12px; font-weight: 700; background: var(--ajo-soft); color: var(--ajo); flex: none; }
+
+  .code { background: var(--terminal); color: var(--terminal-foreground); border-radius: var(--radius-md); padding: 18px; font-size: 13px; line-height: 1.65; overflow-x: auto; }
+
+  .seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; background: var(--paper-2); border: 1px solid var(--border); }
+  .seg button { padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--ink-3); transition: background-color 160ms, color 160ms; }
+  .seg button[aria-pressed="true"] { background: var(--card); color: var(--foreground); box-shadow: 0 1px 2px color-mix(in oklch, var(--foreground) 15%, transparent); }
+
+  .input { width: 100%; min-height: 44px; padding: 0 14px; border-radius: var(--radius-md); border: 1px solid var(--line-strong); background: var(--card); font-size: 15px; }
+  .input:focus { outline: 2px solid var(--ring); outline-offset: 1px; }
+
+  /* Diagram pulses */
+  .flow-line { fill: none; stroke: var(--line-strong); stroke-width: 1.6; }
+  .flow-node { fill: var(--card); stroke: var(--line-strong); }
+  .flow text { font: 700 13px Arial, Helvetica, sans-serif; fill: var(--foreground); }
+  .flow .sub { font: 500 11px ui-monospace, monospace; fill: var(--ink-3); }
+
+  .dark-band { background: var(--terminal); color: var(--terminal-foreground); }
+  .dark-band .lede { color: color-mix(in oklch, var(--terminal-foreground) 72%, transparent); }
+  .dark-card { border-radius: var(--radius-lg); border: 1px solid color-mix(in oklch, var(--terminal-foreground) 14%, transparent); background: color-mix(in oklch, var(--terminal-foreground) 5%, transparent); transition: transform 200ms var(--ease), border-color 200ms; }
+  .dark-card:hover { transform: translateY(-2px); border-color: color-mix(in oklch, var(--terminal-foreground) 30%, transparent); }
+
+  .lime-band { background: var(--lime); color: var(--foreground); }
+  .adire-bg { background-color: var(--ajo); background-image: radial-gradient(circle at center, transparent 9px, color-mix(in oklch, white 16%, transparent) 10px, color-mix(in oklch, white 16%, transparent) 11.5px, transparent 12.5px), radial-gradient(circle at center, color-mix(in oklch, white 18%, transparent) 2px, transparent 2.5px); background-size: 40px 40px, 40px 40px; background-position: 0 0, 20px 20px; }
 }
