@@ -340,11 +340,18 @@ function UnifiedHomePage({ onSelectProject }: { onSelectProject: (p: ActivePage)
               <Button onClick={() => onSelectProject("stellardrop")} className="w-full gap-2 bg-signal text-signal-foreground font-semibold hover:bg-signal/90 text-xs">
                 View Project Details <ArrowRight className="size-3.5" />
               </Button>
-              <Button variant="outline" asChild className="w-full text-xs font-medium">
-                <a href="https://t.me/StellarDropBot" target="_blank" rel="noreferrer">
-                  <Send className="size-3.5" /> Launch Telegram Bot <ExternalLink className="size-3.5" />
-                </a>
-              </Button>
+              <div className="grid grid-cols-2 gap-2">
+                <Button variant="outline" asChild className="text-xs font-medium">
+                  <a href="https://stellardrop.netlify.app/" target="_blank" rel="noreferrer">
+                    Live Web App <ExternalLink className="size-3" />
+                  </a>
+                </Button>
+                <Button variant="outline" asChild className="text-xs font-medium">
+                  <a href="https://t.me/ST_dropBot" target="_blank" rel="noreferrer">
+                    <Send className="size-3" /> Telegram Bot <ExternalLink className="size-3" />
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -524,10 +531,15 @@ function StellarDropProjectPage() {
             Send live Stellar Testnet USDC with an instant claim code over Telegram and WhatsApp. Zero friction for unbanked recipients.
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Button asChild className="gap-2 bg-signal text-signal-foreground font-semibold hover:bg-signal/90 text-xs">
-            <a href="https://t.me/StellarDropBot" target="_blank" rel="noreferrer">
-              <Send className="size-3.5" /> Launch Telegram Bot <ExternalLink className="size-3" />
+            <a href="https://stellardrop.netlify.app/" target="_blank" rel="noreferrer">
+              Launch Live App <ExternalLink className="size-3.5" />
+            </a>
+          </Button>
+          <Button asChild variant="outline" className="gap-2 text-xs font-medium">
+            <a href="https://t.me/ST_dropBot" target="_blank" rel="noreferrer">
+              <Send className="size-3.5" /> Telegram Bot <ExternalLink className="size-3" />
             </a>
           </Button>
           <Button variant="outline" asChild className="text-xs font-medium">
@@ -562,9 +574,9 @@ function StellarDropProjectPage() {
               <p className="font-mono text-xs text-signal font-bold uppercase">Claim Code Ready</p>
               <p className="font-mono text-xl font-bold text-foreground">{createdCode}</p>
               <p className="text-xs text-muted-foreground">Telegram Deep Link:</p>
-              <p className="font-mono text-xs text-signal font-semibold break-all">t.me/StellarDropBot?start={createdCode}</p>
+              <p className="font-mono text-xs text-signal font-semibold break-all">t.me/ST_dropBot?start={createdCode}</p>
               <Button asChild className="w-full mt-2 gap-2 bg-signal text-signal-foreground font-semibold hover:bg-signal/90 text-xs">
-                <a href={`https://t.me/StellarDropBot?start=${createdCode}`} target="_blank" rel="noreferrer">
+                <a href={`https://t.me/ST_dropBot?start=${createdCode}`} target="_blank" rel="noreferrer">
                   <Send className="size-3.5" /> Claim via Telegram Bot <ExternalLink className="size-3" />
                 </a>
               </Button>
@@ -927,18 +939,31 @@ function ContractsRegistryPage() {
                 <p className="font-bold text-foreground">Ajo Savings Circles</p>
                 <p className="font-mono text-[10px] text-muted-foreground">github.com/Savioula23/ajo-stellar</p>
               </div>
-              <Button size="sm" variant="outline" asChild className="h-7 text-xs">
-                <a href="https://github.com/Savioula23/ajo-stellar" target="_blank" rel="noreferrer">Repo</a>
-              </Button>
+              <div className="flex gap-2">
+                <Button size="sm" variant="outline" asChild className="h-7 text-xs">
+                  <a href="https://ajo-stellar.vercel.app" target="_blank" rel="noreferrer">App</a>
+                </Button>
+                <Button size="sm" variant="outline" asChild className="h-7 text-xs">
+                  <a href="https://github.com/Savioula23/ajo-stellar" target="_blank" rel="noreferrer">Repo</a>
+                </Button>
+              </div>
             </div>
             <div className="p-3 rounded border border-border bg-background flex justify-between items-center">
               <div>
                 <p className="font-bold text-foreground">StellarDrop Remittance</p>
                 <p className="font-mono text-[10px] text-muted-foreground">github.com/jedi-dtechmaker/stellar-hackathon</p>
               </div>
-              <Button size="sm" variant="outline" asChild className="h-7 text-xs">
-                <a href="https://github.com/jedi-dtechmaker/stellar-hackathon" target="_blank" rel="noreferrer">Repo</a>
-              </Button>
+              <div className="flex gap-2">
+                <Button size="sm" variant="outline" asChild className="h-7 text-xs">
+                  <a href="https://stellardrop.netlify.app/" target="_blank" rel="noreferrer">App</a>
+                </Button>
+                <Button size="sm" variant="outline" asChild className="h-7 text-xs">
+                  <a href="https://t.me/ST_dropBot" target="_blank" rel="noreferrer">Bot</a>
+                </Button>
+                <Button size="sm" variant="outline" asChild className="h-7 text-xs">
+                  <a href="https://github.com/jedi-dtechmaker/stellar-hackathon" target="_blank" rel="noreferrer">Repo</a>
+                </Button>
+              </div>
             </div>
             <div className="p-3 rounded border border-border bg-background flex justify-between items-center">
               <div>

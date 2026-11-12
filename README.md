@@ -31,7 +31,7 @@ flowchart TD
 | :--- | :--- | :--- |
 | **Ajo Stellar** | Decentralized Savings (Esusu) | 🌐 [Live Web App](https://ajo-stellar.vercel.app) · [GitHub Repo](https://github.com/Savioula23/ajo-stellar) |
 | **PromptSip** | AI Micropayment Gateway | 📜 [StellarExpert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CB2U4ZI42D4NVHUXKG4ZZRAOYESU65QIWY47EZX5HMRQVJMDKAKWAK2N) · [Stellar Lab](https://lab.stellar.org/r/testnet/contract/CB2U4ZI42D4NVHUXKG4ZZRAOYESU65QIWY47EZX5HMRQVJMDKAKWAK2N) |
-| **StellarDrop** | Social Remittance & Telegram Bot | 🤖 [GitHub Repo](https://github.com/jedi-dtechmaker/stellar-hackathon) · SDF Test Anchor SEP-10/24 |
+| **StellarDrop** | Social Remittance & Telegram Bot | 🌐 [Live Web App](https://stellardrop.netlify.app/) · 🤖 [Telegram Bot](https://t.me/ST_dropBot) · [GitHub Repo](https://github.com/jedi-dtechmaker/stellar-hackathon) |
 
 ---
 
