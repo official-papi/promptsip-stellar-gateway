@@ -475,11 +475,18 @@ function StellarDropView() {
               Send live Stellar Testnet USDC with an instant claim code. Recipients open Telegram, receive an automatic encrypted custodial wallet, and withdraw via SDF Test Anchor.
             </p>
           </div>
-          <Button size="sm" variant="outline" asChild>
-            <a href="https://github.com/jedi-dtechmaker/stellar-hackathon" target="_blank" rel="noreferrer">
-              GitHub Repo
-            </a>
-          </Button>
+          <div className="flex flex-wrap gap-2">
+            <Button size="sm" asChild className="gap-2 bg-signal text-primary-foreground font-semibold">
+              <a href="https://t.me/StellarDropBot" target="_blank" rel="noreferrer">
+                <Send className="size-3.5" /> Launch Telegram Bot
+              </a>
+            </Button>
+            <Button size="sm" variant="outline" asChild>
+              <a href="https://github.com/jedi-dtechmaker/stellar-hackathon" target="_blank" rel="noreferrer">
+                GitHub Repo
+              </a>
+            </Button>
+          </div>
         </div>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
@@ -505,6 +512,11 @@ function StellarDropView() {
                 <div className="mt-2 text-[11px] text-muted-foreground">
                   Telegram Deep Link: <span className="font-mono text-signal">t.me/StellarDropBot?start={createdCode}</span>
                 </div>
+                <Button size="sm" asChild className="mt-3 w-full gap-2 bg-signal text-primary-foreground font-semibold">
+                  <a href={`https://t.me/StellarDropBot?start=${createdCode}`} target="_blank" rel="noreferrer">
+                    <Send className="size-3.5" /> Claim in Telegram Bot <ExternalLink className="size-3" />
+                  </a>
+                </Button>
               </div>
             )}
           </div>
