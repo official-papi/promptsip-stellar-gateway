@@ -1,33 +1,78 @@
-# PromptSip Stellar Gateway
+# 🌟 StellarSuite — Boundless Hackathon 2026
 
-Build PromptSip: an HTTP 402 Payment Required AI micropayment gateway and developer playground on Stellar. 
+> A unified Stellar Web3 platform built by a team of three, uniting **Community Rotating Savings (Ajo)**, **Social Remittances & Telegram Micro-Drops (StellarDrop)**, and **Autonomous AI HTTP 402 Micropayments (PromptSip)** on Stellar & Soroban.
 
-It allows unbanked developers and autonomous AI agents to pay per prompt in sub-cent micropayments on Stellar (XLM / USDC) with zero credit cards, API keys, or subscriptions.
+---
 
-Key features:
-1. Interactive AI Terminal & Chat: Test prompt submissions that trigger an HTTP 402 Payment Required response, auto-clear via connected Stellar testnet wallet (Freighter wallet or instant in-browser testnet burner keypair with friendbot funding), and stream AI response tokens immediately upon settlement.
-2. HTTP 402 Protocol Inspector: A developer inspect view showing the raw HTTP request/response headers (402 status, Stellar challenge payload, transaction envelope, instant ledger confirmation hash).
-3. Agent Integration & Code Generator: Ready-to-copy code snippets (Python, TypeScript, cURL) showing how autonomous agents can automatically negotiate and pay the 402 challenge.
-4. Ledger Telemetry & Cost Dashboard: Live fee metrics comparing Stellar's sub-cent cost ($0.00001) against credit card minimums ($0.30+), transaction latency, and recent streaming receipts.
-5. Sleek cyberpunk / modern developer UI with dark mode, high contrast, and smooth animations fitting a top-tier hackathon project.
+## 🏛️ The Three Pillars
 
-This project was built with [Lovable](https://lovable.dev).
+```mermaid
+flowchart TD
+  subgraph Community Finance
+    A[Ajo: Rotating Savings Circles] -->|Earned Pot / Yield| S[Stellar USDC Pool]
+  end
 
-## Build with Lovable
+  subgraph Social Remittances
+    S -->|Social Cash Drops| B[StellarDrop: Telegram Micro-Gifts]
+    B -->|SEP-10 / SEP-24| C[SDF Anchor: Bank Account / NGN]
+  end
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/63fb0113-0fc7-46a9-a5ed-47a3420dac4d).
+  subgraph AI Agent Economy
+    S -->|HTTP 402 Pay-Per-Prompt| D[PromptSip: AI Gateway & Meter]
+    D -->|On-Chain Verification| E[Soroban Smart Contract: promptsip_meter]
+  end
+```
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+---
 
-## Development
+## 🚀 Live Testnet Deployments & Demos
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+| Project | Role | Live Deployment / Link |
+| :--- | :--- | :--- |
+| **Ajo Stellar** | Decentralized Savings (Esusu) | 🌐 [Live Web App](https://ajo-stellar.vercel.app) · [GitHub Repo](https://github.com/Savioula23/ajo-stellar) |
+| **PromptSip** | AI Micropayment Gateway | 📜 [StellarExpert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CB2U4ZI42D4NVHUXKG4ZZRAOYESU65QIWY47EZX5HMRQVJMDKAKWAK2N) · [Stellar Lab](https://lab.stellar.org/r/testnet/contract/CB2U4ZI42D4NVHUXKG4ZZRAOYESU65QIWY47EZX5HMRQVJMDKAKWAK2N) |
+| **StellarDrop** | Social Remittance & Telegram Bot | 🤖 [GitHub Repo](https://github.com/jedi-dtechmaker/stellar-hackathon) · SDF Test Anchor SEP-10/24 |
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+---
+
+## ⚡ PromptSip Soroban Smart Contract Details
+
+- **Contract ID:** `CB2U4ZI42D4NVHUXKG4ZZRAOYESU65QIWY47EZX5HMRQVJMDKAKWAK2N`
+- **Network:** Stellar Testnet
+- **Payment Asset:** Native XLM SAC (`CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC`)
+- **Admin Address:** `GAMWOYHYZLFCQHNWBRHCJOMLM3S5ZUM2VAW4QQD2GPJJSHML7BSQEY3Q`
+- **Deployment TX:** [`9b421221df7ed238...`](https://stellar.expert/explorer/testnet/tx/9b421221df7ed238f996a93e78fadf8c0daa4d5b84d034564dfa438352033c61)
+- **Init TX:** [`fce04374a177e723...`](https://stellar.expert/explorer/testnet/tx/fce04374a177e7235eb1255256d371c1263ded684dd978bbb537fd3c93d57dfb)
+
+### Contract Methods:
+1. `pay_prompt(payer, prompt_id, model, tokens_used, amount)`: Direct HTTP 402 pay-per-prompt settlement with token transfer & on-chain receipts.
+2. `fund_credits(payer, amount)`: Pre-funded micro-credit pool enabling zero-latency AI streaming without waiting for block consensus.
+3. `consume_credit(payer, prompt_id, model, tokens_used, amount)`: Settles streaming tokens from payer's balance.
+4. `withdraw_credits(payer, amount)`: Refunds unused credits back to payer.
+5. `get_prompt(prompt_id)`: Verifies prompt receipts on-chain with replay protection.
+6. `get_stats()`: Returns total prompts served & total volume settled.
+
+---
+
+## 👥 Team Members & Contributions
+
+- **official-papi**: PromptSip AI Gateway, Soroban Smart Contract (`promptsip_meter`), and Unified Platform Architecture.
+- **Savioula23**: Ajo Rotating Savings Protocol, Soroban contract, Passkey smart-contract accounts, and live frontend.
+- **jedi-dtechmaker**: StellarDrop Express API, Telegraf Telegram bot, and SDF Test Anchor SEP-10 / SEP-24 off-ramping.
+
+---
+
+## 🛠️ Local Development
+
+### Web App:
+```bash
+pnpm install
+pnpm run dev
+```
+
+### Soroban Smart Contract:
+```bash
+cd contracts
+cargo test        # 3/3 passing tests
+stellar contract build
 ```
