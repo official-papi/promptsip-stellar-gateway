@@ -205,7 +205,7 @@ export function PromptSipPlayground() {
 }
 
 function Metric({ icon: Icon, label, value, detail, accent = false }: { icon: typeof Zap; label: string; value: string; detail: string; accent?: boolean }) {
-  return <div className="flex items-start gap-3 py-4 sm:px-4 sm:first:pl-0 sm: last:border-l-0 sm:border-l sm:border-border">
+  return <div className="flex items-start gap-3 py-4 sm:border-l sm:border-border sm:px-4 sm:first:border-l-0 sm:first:pl-0">
     <div className={`mt-0.5 grid size-8 shrink-0 place-items-center rounded border border-border ${accent ? "bg-signal-soft text-signal" : "bg-secondary text-muted-foreground"}`}><Icon className="size-4" /></div>
     <div className="min-w-0"><p className="text-[11px] text-muted-foreground">{label}</p><p className={`mt-0.5 font-mono text-lg font-medium ${accent ? "text-signal" : "text-foreground"}`}>{value}</p><p className="mt-0.5 text-[10px] text-muted-foreground">{detail}</p></div>
   </div>;
