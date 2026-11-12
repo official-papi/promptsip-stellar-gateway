@@ -11,7 +11,7 @@
 /*
  * Design system definition:
  * High-end institutional fintech design:
- * Clean white-infused mint green, deep slate neutrals, razor-sharp solid borders, zero gradients.
+ * Clean crisp white surfaces, subtle slate foundation, refined emerald mint accents, zero gradients.
  */
 
 @theme inline {
@@ -63,54 +63,60 @@
 
 :root {
   --radius: 0.375rem;
-  /* Deep slate neutral foundation */
-  --background: oklch(0.13 0.006 250);
-  --foreground: oklch(0.97 0.005 250);
-  --card: oklch(0.16 0.008 250);
-  --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.18 0.008 250);
-  --popover-foreground: oklch(0.97 0.005 250);
   
-  /* White-infused mint emerald (refined, premium fintech, zero neon) */
-  --primary: oklch(0.91 0.085 158);
-  --primary-foreground: oklch(0.12 0.015 250);
+  /* Mixture of clean white & subtle off-white slate foundation */
+  --background: oklch(0.985 0.002 247); /* #F8FAFC subtle off-white slate */
+  --foreground: oklch(0.14 0.015 250);   /* #0F172A deep executive slate */
   
-  --secondary: oklch(0.20 0.008 250);
-  --secondary-foreground: oklch(0.92 0.005 250);
-  --muted: oklch(0.19 0.006 250);
-  --muted-foreground: oklch(0.65 0.012 250);
-  --accent: oklch(0.22 0.010 250);
-  --accent-foreground: oklch(0.97 0.005 250);
-  --destructive: oklch(0.65 0.18 25);
-  --destructive-foreground: oklch(0.98 0.01 250);
+  /* Pure crisp white card surfaces */
+  --card: oklch(1 0 0);                  /* #FFFFFF pure crisp white */
+  --card-foreground: oklch(0.14 0.015 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.14 0.015 250);
   
-  /* Crisp 1px solid structural borders */
-  --border: oklch(0.26 0.008 250);
-  --input: oklch(0.24 0.008 250);
-  --ring: oklch(0.91 0.085 158);
+  /* Refined white-infused emerald mint */
+  --primary: oklch(0.55 0.15 155);       /* #059669 executive emerald */
+  --primary-foreground: oklch(1 0 0);    /* #FFFFFF pure white text on primary */
   
-  --chart-1: oklch(0.91 0.085 158);
-  --chart-2: oklch(0.78 0.12 215);
-  --chart-3: oklch(0.82 0.14 85);
-  --chart-4: oklch(0.70 0.15 25);
-  --chart-5: oklch(0.75 0.10 300);
+  /* Secondary clean slate surfaces */
+  --secondary: oklch(0.95 0.005 250);    /* #F1F5F9 soft clean slate */
+  --secondary-foreground: oklch(0.20 0.015 250);
+  --muted: oklch(0.96 0.004 250);
+  --muted-foreground: oklch(0.48 0.015 250); /* #64748B readable slate-500 */
+  --accent: oklch(0.94 0.006 250);
+  --accent-foreground: oklch(0.14 0.015 250);
+  --destructive: oklch(0.55 0.20 25);
+  --destructive-foreground: oklch(1 0 0);
   
-  --sidebar: oklch(0.11 0.005 250);
-  --sidebar-foreground: oklch(0.92 0.005 250);
-  --sidebar-primary: oklch(0.91 0.085 158);
-  --sidebar-primary-foreground: oklch(0.12 0.015 250);
-  --sidebar-accent: oklch(0.19 0.008 250);
-  --sidebar-accent-foreground: oklch(0.97 0.005 250);
-  --sidebar-border: oklch(0.22 0.006 250);
-  --sidebar-ring: oklch(0.91 0.085 158);
+  /* Crisp 1px solid slate borders */
+  --border: oklch(0.90 0.005 250);       /* #E2E8F0 crisp light slate border */
+  --input: oklch(0.90 0.005 250);
+  --ring: oklch(0.55 0.15 155);
   
-  /* Signal: White-infused mint (clean, readable, institutional) */
-  --signal: oklch(0.91 0.085 158);
-  --signal-soft: oklch(0.22 0.025 158);
-  --signal-foreground: oklch(0.12 0.015 250);
-  --warning: oklch(0.84 0.12 85);
-  --terminal: oklch(0.10 0.005 250);
-  --terminal-foreground: oklch(0.92 0.005 250);
+  --chart-1: oklch(0.55 0.15 155);
+  --chart-2: oklch(0.58 0.12 215);
+  --chart-3: oklch(0.65 0.14 85);
+  --chart-4: oklch(0.55 0.15 25);
+  --chart-5: oklch(0.55 0.10 300);
+  
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.14 0.015 250);
+  --sidebar-primary: oklch(0.55 0.15 155);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.95 0.005 250);
+  --sidebar-accent-foreground: oklch(0.14 0.015 250);
+  --sidebar-border: oklch(0.90 0.005 250);
+  --sidebar-ring: oklch(0.55 0.15 155);
+  
+  /* Signal: White-infused mint pill with deep emerald accent */
+  --signal: oklch(0.55 0.15 155);        /* #059669 executive emerald */
+  --signal-soft: oklch(0.96 0.03 155);   /* #ECFDF5 soft white-infused mint */
+  --signal-foreground: oklch(1 0 0);     /* #FFFFFF pure white */
+  --warning: oklch(0.70 0.14 85);
+  
+  /* Sleek dark code block contrast on white cards */
+  --terminal: oklch(0.15 0.015 250);     /* #0F172A deep dark slate for code */
+  --terminal-foreground: oklch(0.96 0.005 250);
 }
 
 @layer base {
