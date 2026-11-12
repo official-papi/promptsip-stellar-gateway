@@ -10,7 +10,7 @@ const AJO_APP = "https://ajo-stellar.vercel.app";
 const AJO_REPO = "https://github.com/Savioula23/ajo-stellar";
 const AJO_CONTRACT = "CD3DQJD4NVU2OHGM4LTRUMJAH6XK2LFGGE3ZRZTRUH7XJ37VZ4K36BFT";
 const DROP_REPO = "https://github.com/jedi-dtechmaker/stellar-hackathon";
-const DROP_BOT = "https://t.me/StellarDropBot";
+const DROP_BOT = "https://t.me/ST_dropBot";
 const DROP_APP = "https://stellardrop.netlify.app";
 const SIP_REPO = "https://github.com/official-papi/promptsip-stellar-gateway";
 const SIP_CONTRACT = "CB2U4ZI42D4NVHUXKG4ZZRAOYESU65QIWY47EZX5HMRQVJMDKAKWAK2N";
@@ -491,7 +491,7 @@ function DropPage() {
               <div className="rounded-[10px] p-4" style={{ background: "var(--drop-soft)" }}>
                 <span className="tag" style={{ color: "var(--drop)" }}>Preview · {amount} USDC</span>
                 <p className="num mt-2 text-xl font-bold">{preview}</p>
-                <p className="num mt-1 break-all text-sm text-muted-foreground">t.me/StellarDropBot?start={preview}</p>
+                <p className="num mt-1 break-all text-sm text-muted-foreground">t.me/ST_dropBot?start={preview}</p>
               </div>
             )}
           </form>
