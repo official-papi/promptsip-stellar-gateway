@@ -136,81 +136,81 @@ export function PromptSipPlayground() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-signal/20 selection:text-foreground">
       <div className="min-h-screen md:grid md:grid-cols-[250px_minmax(0,1fr)]">
-        {/* SIDEBAR NAVIGATION */}
-        <aside className="flex min-h-screen flex-col border-r border-sidebar-border bg-sidebar max-md:min-h-0 max-md:border-r-0 max-md:border-b">
-          <div className="flex h-[68px] items-center gap-3 border-b border-sidebar-border px-5">
+        {/* SIDEBAR NAVIGATION (STICKY FIXED HEIGHT) */}
+        <aside className="md:sticky md:top-0 md:h-screen md:max-h-screen flex flex-col border-r border-sidebar-border bg-sidebar max-md:min-h-0 max-md:border-r-0 max-md:border-b overflow-hidden">
+          <div className="flex h-[64px] shrink-0 items-center gap-3 border-b border-sidebar-border px-5">
             <div className="grid size-8 place-items-center rounded bg-signal text-primary-foreground font-bold text-xs tracking-wider">
               SS
             </div>
             <div>
-              <span className="text-[16px] font-bold tracking-tight">stellar<span className="text-signal">suite</span></span>
-              <p className="text-[10px] text-muted-foreground">Boundless Hackathon 2026</p>
+              <span className="text-[15px] font-bold tracking-tight">stellar<span className="text-signal">suite</span></span>
+              <p className="text-[9.5px] text-muted-foreground">Boundless Hackathon 2026</p>
             </div>
             <span className="ml-auto rounded border border-signal/30 bg-signal/10 px-1.5 py-0.5 font-mono text-[9px] font-semibold text-signal">
               TESTNET
             </span>
           </div>
 
-          <div className="px-3 pt-5 max-md:flex max-md:gap-1 max-md:overflow-x-auto max-md:pt-2">
-            <p className="px-2 pb-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground max-md:hidden">Platform</p>
+          <div className="flex-1 overflow-y-auto px-3 py-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-md:flex max-md:gap-1 max-md:overflow-x-auto max-md:py-2">
+            <p className="px-2 pb-1.5 font-mono text-[9.5px] uppercase tracking-widest text-muted-foreground max-md:hidden">Platform</p>
             {navigation.filter((n) => n.section === "overview").map(({ id, label, icon: Icon }) => (
               <Button
                 key={id}
                 variant="ghost"
                 onClick={() => setView(id)}
-                className={`mb-1 h-9 w-full justify-start gap-2.5 rounded px-2.5 text-[12.5px] max-md:mb-0 max-md:w-auto max-md:shrink-0 ${view === id ? "bg-sidebar-accent text-sidebar-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
+                className={`mb-0.5 h-8.5 w-full justify-start gap-2.5 rounded px-2.5 text-[12px] max-md:mb-0 max-md:w-auto max-md:shrink-0 ${view === id ? "bg-sidebar-accent text-sidebar-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
                 aria-current={view === id ? "page" : undefined}
               >
-                <Icon className={`size-4 ${view === id ? "text-signal" : ""}`} />
+                <Icon className={`size-3.5 ${view === id ? "text-signal" : ""}`} />
                 {label}
               </Button>
             ))}
 
-            <p className="px-2 pb-2 pt-4 font-mono text-[10px] uppercase tracking-widest text-muted-foreground max-md:hidden">AI 402 Gateway</p>
+            <p className="px-2 pb-1.5 pt-3 font-mono text-[9.5px] uppercase tracking-widest text-muted-foreground max-md:hidden">AI 402 Gateway</p>
             {navigation.filter((n) => n.section === "promptsip").map(({ id, label, icon: Icon }) => (
               <Button
                 key={id}
                 variant="ghost"
                 onClick={() => setView(id)}
-                className={`mb-1 h-9 w-full justify-start gap-2.5 rounded px-2.5 text-[12.5px] max-md:mb-0 max-md:w-auto max-md:shrink-0 ${view === id ? "bg-sidebar-accent text-sidebar-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
+                className={`mb-0.5 h-8.5 w-full justify-start gap-2.5 rounded px-2.5 text-[12px] max-md:mb-0 max-md:w-auto max-md:shrink-0 ${view === id ? "bg-sidebar-accent text-sidebar-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
                 aria-current={view === id ? "page" : undefined}
               >
-                <Icon className={`size-4 ${view === id ? "text-signal" : ""}`} />
+                <Icon className={`size-3.5 ${view === id ? "text-signal" : ""}`} />
                 {label}
                 {id === "protocol" && <span className="ml-auto rounded border border-warning/30 px-1.5 py-0.5 font-mono text-[9px] text-warning max-md:hidden">402</span>}
               </Button>
             ))}
 
-            <p className="px-2 pb-2 pt-4 font-mono text-[10px] uppercase tracking-widest text-muted-foreground max-md:hidden">Ecosystem Protocols</p>
+            <p className="px-2 pb-1.5 pt-3 font-mono text-[9.5px] uppercase tracking-widest text-muted-foreground max-md:hidden">Ecosystem Protocols</p>
             {navigation.filter((n) => n.section === "suite").map(({ id, label, icon: Icon }) => (
               <Button
                 key={id}
                 variant="ghost"
                 onClick={() => setView(id)}
-                className={`mb-1 h-9 w-full justify-start gap-2.5 rounded px-2.5 text-[12.5px] max-md:mb-0 max-md:w-auto max-md:shrink-0 ${view === id ? "bg-sidebar-accent text-sidebar-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
+                className={`mb-0.5 h-8.5 w-full justify-start gap-2.5 rounded px-2.5 text-[12px] max-md:mb-0 max-md:w-auto max-md:shrink-0 ${view === id ? "bg-sidebar-accent text-sidebar-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
                 aria-current={view === id ? "page" : undefined}
               >
-                <Icon className={`size-4 ${view === id ? "text-signal" : ""}`} />
+                <Icon className={`size-3.5 ${view === id ? "text-signal" : ""}`} />
                 {label}
               </Button>
             ))}
           </div>
 
-          <div className="mt-auto border-t border-sidebar-border p-4 max-md:hidden">
+          <div className="shrink-0 border-t border-sidebar-border p-3.5 max-md:hidden">
             <div className="flex items-center gap-2 text-[11px] font-medium text-foreground">
               <span className="size-2 rounded-full bg-signal animate-pulse" />
               Stellar Testnet Live
             </div>
-            <div className="mt-2 text-[10px] text-muted-foreground font-mono truncate">
+            <div className="mt-1 text-[9.5px] text-muted-foreground font-mono truncate">
               Contract: CB2U4Z…AK2N
             </div>
-            <div className="mt-3 flex gap-2">
-              <Button size="sm" variant="outline" asChild className="h-7 w-full text-[10px]">
+            <div className="mt-2.5 flex gap-2">
+              <Button size="sm" variant="outline" asChild className="h-6.5 w-full text-[10px] px-1">
                 <a href="https://github.com/official-papi/promptsip-stellar-gateway" target="_blank" rel="noreferrer">
                   GitHub
                 </a>
               </Button>
-              <Button size="sm" variant="outline" asChild className="h-7 w-full text-[10px]">
+              <Button size="sm" variant="outline" asChild className="h-6.5 w-full text-[10px] px-1">
                 <a href="https://stellar.expert/explorer/testnet/contract/CB2U4ZI42D4NVHUXKG4ZZRAOYESU65QIWY47EZX5HMRQVJMDKAKWAK2N" target="_blank" rel="noreferrer">
                   Explorer
                 </a>
