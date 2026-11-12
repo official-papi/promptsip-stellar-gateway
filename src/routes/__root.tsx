@@ -81,11 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "PromptSip — Stellar AI Micropayment Playground" },
-      { name: "description", content: "Explore pay-per-prompt AI payments with the Stellar HTTP 402 protocol playground." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "PromptSip — Stellar AI Micropayment Playground" },
-      { property: "og:description", content: "Explore pay-per-prompt AI payments with the Stellar HTTP 402 protocol playground." },
+      { title: "Stelsuite" },
+      { name: "description", content: "Save, send and pay per use on Stellar." },
+      { property: "og:title", content: "Stelsuite" },
+      { property: "og:description", content: "Save, send and pay per use on Stellar." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -102,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;700;800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap",
       },
       {
         rel: "stylesheet",

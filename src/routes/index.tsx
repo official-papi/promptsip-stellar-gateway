@@ -1,17 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { PromptSipPlayground } from "@/components/promptsip-playground";
+import { Suite } from "@/components/suite";
+
+const title = "Stelsuite: save, send and pay per use on Stellar";
+const description = "Ajo savings circles, StellarDrop Telegram transfers and PromptSip pay-per-request AI, settled in USDC on Stellar.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "PromptSip — Stellar AI Micropayment Playground" },
-      { name: "description", content: "Explore pay-per-prompt AI payments with the Stellar HTTP 402 protocol playground." },
-      { property: "og:title", content: "PromptSip — Stellar AI Micropayment Playground" },
-      { property: "og:description", content: "Explore pay-per-prompt AI payments with the Stellar HTTP 402 protocol playground." },
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: PromptSipPlayground,
+  component: Suite,
 });
