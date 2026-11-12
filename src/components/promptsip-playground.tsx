@@ -365,23 +365,23 @@ function UnifiedHomePage({ onSelectProject }: { onSelectProject: (p: ActivePage)
                 <span className="font-mono text-xs text-muted-foreground">official-papi</span>
               </div>
               <h3 className="text-2xl font-bold mt-4 text-foreground">PromptSip</h3>
-              <p className="text-sm font-medium text-signal mt-1">HTTP 402 Micro-Settlement Gateway</p>
+              <p className="text-sm font-medium text-signal mt-1">Pay-Per-Prompt AI Gateway on Stellar</p>
               <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
-                Autonomous pay-per-request settlement protocol implementing the RFC HTTP 402 standard. Powered by a custom Rust Soroban smart contract with pre-funded micro-credit vaults to defeat block latency.
+                An on-chain vending machine for AI. Instead of paying $20/month subscriptions or entering credit cards, developers and AI agents pay fractions of a cent ($0.00001) per prompt on Stellar Soroban with zero signups.
               </p>
 
               <div className="mt-6 space-y-2 border-t border-border pt-4 text-xs font-mono">
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Contract ID</span>
-                  <span className="text-signal font-semibold">CB2U4Z…AK2N</span>
+                  <span>How It Works</span>
+                  <span className="text-foreground">HTTP 402 Pay-Per-Query</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Protocol</span>
-                  <span className="text-foreground">RFC HTTP 402 Standard</span>
+                  <span>Cost per Prompt</span>
+                  <span className="text-signal font-semibold">$0.00001 (0.001 XLM)</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Latency</span>
-                  <span className="text-foreground">0ms Streaming Vaults</span>
+                  <span>Soroban Contract</span>
+                  <span className="text-foreground">CB2U4Z…AK2N</span>
                 </div>
               </div>
             </div>
@@ -676,9 +676,9 @@ function PromptSipProjectPage() {
           <span className="rounded bg-signal-soft px-2.5 py-1 font-mono text-[10px] text-signal font-bold">
             PROJECT 3 · HTTP 402 SETTLEMENT
           </span>
-          <h1 className="text-3xl font-extrabold tracking-tight mt-2 text-foreground">PromptSip — Micro-Settlement Gateway</h1>
-          <p className="text-sm text-muted-foreground mt-1 max-w-2xl">
-            Autonomous HTTP 402 micro-payment gateway with live Soroban smart contract verification and 0ms streaming vaults.
+          <h1 className="text-3xl font-extrabold tracking-tight mt-2 text-foreground">PromptSip — Pay-Per-Prompt AI Gateway</h1>
+          <p className="text-sm text-muted-foreground mt-1 max-w-2xl leading-relaxed">
+            An on-chain digital vending machine for AI: Pay fractions of a cent ($0.00001) per prompt or API call on Stellar Soroban with zero subscriptions and zero credit cards.
           </p>
         </div>
         <div className="flex gap-2">
@@ -694,6 +694,56 @@ function PromptSipProjectPage() {
           </Button>
         </div>
       </div>
+
+      {/* PLAIN-ENGLISH PROJECT EXPLAINER */}
+      <section className="rounded-xl border border-border bg-card p-6 space-y-6">
+        <div>
+          <span className="rounded bg-signal-soft px-2.5 py-1 font-mono text-[10px] text-signal font-bold uppercase">
+            Understand PromptSip in 60 Seconds
+          </span>
+          <h2 className="text-2xl font-bold mt-2 text-foreground">
+            How It Works: No Subscriptions. No Credit Cards. Just Instant Micropayments.
+          </h2>
+          <p className="text-xs text-muted-foreground mt-2 leading-relaxed max-w-3xl">
+            Today, AI models and APIs force developers and users to pay <strong>$20/month fixed subscriptions</strong> or link high-risk credit cards.
+            Credit card processors (Stripe/Visa) charge a minimum fee of <strong>$0.30 per swipe</strong>, making 0.001-cent AI prompts impossible.
+            <strong> PromptSip unlocks true micropayments on Stellar</strong>: with fees of $0.00001, our live Soroban smart contract lets you pay strictly for what you use, per prompt, in milliseconds.
+          </p>
+        </div>
+
+        {/* 3-STEP VISUAL WORKFLOW */}
+        <div className="grid gap-4 md:grid-cols-3 text-xs">
+          <div className="rounded-lg border border-border bg-background p-4 space-y-1.5">
+            <span className="rounded bg-signal text-signal-foreground px-2 py-0.5 font-mono text-[10px] font-bold">
+              STEP 1
+            </span>
+            <h4 className="font-bold text-sm text-foreground">Ask Any AI Question</h4>
+            <p className="text-muted-foreground leading-relaxed text-xs">
+              Your app or autonomous AI agent sends a prompt. No login, no password, and no credit card is required.
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-border bg-background p-4 space-y-1.5">
+            <span className="rounded bg-signal text-signal-foreground px-2 py-0.5 font-mono text-[10px] font-bold">
+              STEP 2
+            </span>
+            <h4 className="font-bold text-sm text-foreground">HTTP 402 Challenge</h4>
+            <p className="text-muted-foreground leading-relaxed text-xs">
+              The server pauses and returns standard web status <code className="text-signal font-semibold">402 Payment Required</code>: <em>"Pay 0.001 XLM on Soroban contract CB2U4Z..."</em>
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-border bg-background p-4 space-y-1.5">
+            <span className="rounded bg-signal text-signal-foreground px-2 py-0.5 font-mono text-[10px] font-bold">
+              STEP 3
+            </span>
+            <h4 className="font-bold text-sm text-foreground">Instant 0ms Response</h4>
+            <p className="text-muted-foreground leading-relaxed text-xs">
+              The user&apos;s Stellar wallet settles the tiny fee, the Soroban contract confirms it on-chain, and the AI streams the response immediately.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* METRIC STRIP */}
       <section className="grid grid-cols-1 border-y border-border sm:grid-cols-3 font-mono">
@@ -780,7 +830,35 @@ function PromptSipProjectPage() {
                 )}
               </div>
 
-              <form onSubmit={submitPrompt} className="mt-4 flex gap-2 border-t border-border pt-3">
+              {/* QUICK PRESET EXAMPLES */}
+              <div className="mt-3 space-y-1.5 border-t border-border pt-3">
+                <p className="text-[11px] text-muted-foreground font-medium">Click an example prompt to test live Stellar settlement:</p>
+                <div className="flex flex-wrap gap-2 text-xs">
+                  <button
+                    type="button"
+                    onClick={() => setPrompt("Explain how Soroban smart contracts settle 0.001 XLM micropayments")}
+                    className="rounded border border-border bg-background px-2.5 py-1 text-xs text-foreground hover:border-signal/50 hover:bg-signal-soft transition-colors text-left"
+                  >
+                    💡 How Soroban settles 0.001 XLM
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPrompt("Why are credit card minimum fees ($0.30) too high for AI queries?")}
+                    className="rounded border border-border bg-background px-2.5 py-1 text-xs text-foreground hover:border-signal/50 hover:bg-signal-soft transition-colors text-left"
+                  >
+                    ⚡ Credit card fees vs Stellar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPrompt("Audit on-chain receipt hash on Stellar Testnet")}
+                    className="rounded border border-border bg-background px-2.5 py-1 text-xs text-foreground hover:border-signal/50 hover:bg-signal-soft transition-colors text-left"
+                  >
+                    🔍 Verify on-chain receipt
+                  </button>
+                </div>
+              </div>
+
+              <form onSubmit={submitPrompt} className="mt-3 flex gap-2">
                 <input
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
