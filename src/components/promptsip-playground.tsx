@@ -123,56 +123,76 @@ export function PromptSipPlayground() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-      {/* TOP NAVIGATION HEADER (NO CLUTTERED SIDEBAR) */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
+      {/* TOP NAVIGATION HEADER */}
+      <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur-md shadow-xs">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-8">
             <button
               onClick={() => setPage("home")}
-              className="flex items-center gap-2.5 text-left focus:outline-none"
+              className="flex items-center gap-2.5 text-left focus:outline-none group"
             >
-              <div className="grid size-8 place-items-center rounded bg-signal text-signal-foreground font-bold text-xs tracking-wider">
-                SS
+              <div className="grid size-8 place-items-center rounded bg-signal text-signal-foreground font-bold text-xs tracking-wider shadow-xs">
+                <Sparkles className="size-4" />
               </div>
-              <div>
-                <span className="text-base font-bold tracking-tight text-foreground">
-                  stellar<span className="text-signal">suite</span>
+              <div className="flex items-center gap-2">
+                <span className="text-lg font-bold tracking-tight text-foreground font-serif">
+                  Stellar<span className="text-signal">Suite</span>
                 </span>
-                <span className="ml-2 hidden rounded border border-signal/30 bg-signal-soft px-1.5 py-0.5 font-mono text-[9px] font-semibold text-signal sm:inline-block">
+                <span className="rounded border border-signal/30 bg-signal-soft px-1.5 py-0.5 font-mono text-[9px] font-bold text-signal tracking-wide">
                   TESTNET
                 </span>
               </div>
             </button>
 
             {/* MAIN NAVIGATION LINKS */}
-            <nav className="hidden md:flex items-center gap-1 font-medium text-xs">
+            <nav className="hidden lg:flex items-center gap-1.5 font-serif text-sm">
               <button
                 onClick={() => setPage("home")}
-                className={`rounded px-3 py-1.5 transition-colors ${page === "home" ? "bg-secondary text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
+                className={`rounded px-3 py-1.5 text-xs font-semibold transition-all ${
+                  page === "home"
+                    ? "bg-signal text-signal-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
               >
                 Overview
               </button>
               <button
                 onClick={() => setPage("ajo")}
-                className={`rounded px-3 py-1.5 transition-colors ${page === "ajo" ? "bg-secondary text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
+                className={`rounded px-3 py-1.5 text-xs font-semibold transition-all ${
+                  page === "ajo"
+                    ? "bg-signal text-signal-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
               >
-                1. Ajo Savings (Esusu)
+                Ajo Savings
               </button>
               <button
                 onClick={() => setPage("stellardrop")}
-                className={`rounded px-3 py-1.5 transition-colors ${page === "stellardrop" ? "bg-secondary text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
+                className={`rounded px-3 py-1.5 text-xs font-semibold transition-all ${
+                  page === "stellardrop"
+                    ? "bg-signal text-signal-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
               >
-                2. StellarDrop (Telegram)
+                StellarDrop
               </button>
               <button
                 onClick={() => setPage("promptsip")}
-                className={`rounded px-3 py-1.5 transition-colors ${page === "promptsip" ? "bg-secondary text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
+                className={`rounded px-3 py-1.5 text-xs font-semibold transition-all ${
+                  page === "promptsip"
+                    ? "bg-signal text-signal-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
               >
-                3. PromptSip (HTTP 402)
+                PromptSip Gateway
               </button>
               <button
                 onClick={() => setPage("contracts")}
-                className={`rounded px-3 py-1.5 transition-colors ${page === "contracts" ? "bg-secondary text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}
+                className={`rounded px-3 py-1.5 text-xs font-semibold transition-all ${
+                  page === "contracts"
+                    ? "bg-signal text-signal-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
               >
                 Smart Contracts
               </button>
@@ -180,29 +200,37 @@ export function PromptSipPlayground() {
           </div>
 
           {/* HEADER ACTIONS */}
-          <div className="flex items-center gap-2">
-            <Button size="sm" variant="outline" asChild className="hidden sm:inline-flex h-8 text-xs font-medium">
-              <a href="https://github.com/official-papi/promptsip-stellar-gateway" target="_blank" rel="noreferrer">
-                GitHub Repo
+          <div className="flex items-center gap-2.5">
+            <Button size="sm" variant="outline" asChild className="hidden sm:inline-flex h-8 px-3 text-xs font-medium border-border hover:bg-secondary font-serif">
+              <a href="https://github.com/official-papi/promptsip-stellar-gateway" target="_blank" rel="noreferrer" className="flex items-center gap-1.5">
+                <Code2 className="size-3.5" />
+                <span>GitHub</span>
               </a>
             </Button>
             <Button
               size="sm"
               onClick={() => setPage(page === "home" ? "promptsip" : "home")}
-              className="h-8 gap-1.5 bg-signal text-signal-foreground font-semibold text-xs hover:bg-signal/90"
+              className="h-8 px-3.5 gap-1.5 bg-signal text-signal-foreground font-semibold text-xs hover:bg-signal/90 shadow-xs font-serif"
             >
-              {page === "home" ? "Launch Console" : "Back to Home"}
+              {page === "home" ? (
+                <>
+                  <span>Launch Console</span>
+                  <ArrowRight className="size-3.5" />
+                </>
+              ) : (
+                <span>Back to Overview</span>
+              )}
             </Button>
           </div>
         </div>
 
         {/* MOBILE NAVIGATION BAR */}
-        <div className="flex md:hidden border-t border-border overflow-x-auto px-4 py-2 gap-1 text-xs">
-          <button onClick={() => setPage("home")} className={`px-2 py-1 rounded whitespace-nowrap ${page === "home" ? "bg-secondary font-semibold" : "text-muted-foreground"}`}>Home</button>
-          <button onClick={() => setPage("ajo")} className={`px-2 py-1 rounded whitespace-nowrap ${page === "ajo" ? "bg-secondary font-semibold" : "text-muted-foreground"}`}>Ajo</button>
-          <button onClick={() => setPage("stellardrop")} className={`px-2 py-1 rounded whitespace-nowrap ${page === "stellardrop" ? "bg-secondary font-semibold" : "text-muted-foreground"}`}>StellarDrop</button>
-          <button onClick={() => setPage("promptsip")} className={`px-2 py-1 rounded whitespace-nowrap ${page === "promptsip" ? "bg-secondary font-semibold" : "text-muted-foreground"}`}>PromptSip</button>
-          <button onClick={() => setPage("contracts")} className={`px-2 py-1 rounded whitespace-nowrap ${page === "contracts" ? "bg-secondary font-semibold" : "text-muted-foreground"}`}>Contracts</button>
+        <div className="flex lg:hidden border-t border-border overflow-x-auto px-4 py-2 gap-1.5 text-xs font-serif">
+          <button onClick={() => setPage("home")} className={`px-2.5 py-1 rounded whitespace-nowrap text-xs font-semibold ${page === "home" ? "bg-signal text-signal-foreground" : "text-muted-foreground hover:text-foreground"}`}>Overview</button>
+          <button onClick={() => setPage("ajo")} className={`px-2.5 py-1 rounded whitespace-nowrap text-xs font-semibold ${page === "ajo" ? "bg-signal text-signal-foreground" : "text-muted-foreground hover:text-foreground"}`}>Ajo Savings</button>
+          <button onClick={() => setPage("stellardrop")} className={`px-2.5 py-1 rounded whitespace-nowrap text-xs font-semibold ${page === "stellardrop" ? "bg-signal text-signal-foreground" : "text-muted-foreground hover:text-foreground"}`}>StellarDrop</button>
+          <button onClick={() => setPage("promptsip")} className={`px-2.5 py-1 rounded whitespace-nowrap text-xs font-semibold ${page === "promptsip" ? "bg-signal text-signal-foreground" : "text-muted-foreground hover:text-foreground"}`}>PromptSip</button>
+          <button onClick={() => setPage("contracts")} className={`px-2.5 py-1 rounded whitespace-nowrap text-xs font-semibold ${page === "contracts" ? "bg-signal text-signal-foreground" : "text-muted-foreground hover:text-foreground"}`}>Contracts</button>
         </div>
       </header>
 
@@ -239,25 +267,66 @@ export function PromptSipPlayground() {
    1. UNIFIED HOME LANDING PAGE (EVERY PROJECT STANDS EQUALLY)
 ========================================================================= */
 function UnifiedHomePage({ onSelectProject }: { onSelectProject: (p: ActivePage) => void }) {
+  function scrollToProjects() {
+    const el = document.getElementById("projects");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-8 py-12 space-y-20">
+    <div className="mx-auto max-w-7xl px-4 sm:px-8 py-12 space-y-20 font-serif">
       {/* HERO BANNER */}
-      <section className="text-center max-w-3xl mx-auto space-y-5 pt-4">
-        <div className="inline-flex items-center gap-2 rounded border border-signal/30 bg-signal-soft px-3 py-1 font-mono text-xs text-signal font-semibold">
-          <Sparkles className="size-3.5" /> Boundless Hackathon 2026 · Official Team Build
+      <section className="text-center max-w-3xl mx-auto space-y-6 pt-4">
+        <div className="inline-flex items-center gap-2 rounded-full border border-signal/30 bg-signal-soft px-3.5 py-1 font-mono text-xs text-signal font-semibold">
+          <Sparkles className="size-3.5" /> Boundless Hackathon 2026 · Official Team Build · Stellar Nigeria
         </div>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.12]">
-          One Platform. Three Pillars. Built on Stellar.
+        <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-foreground leading-[1.15]">
+          One Platform. <span className="font-cursive text-signal text-5xl sm:text-7xl">Three Pillars.</span> Built on Stellar.
         </h1>
         <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-          StellarSuite brings together three foundational projects from our 3-person team: Community Savings, Telegram Social Remittances, and Programmable HTTP 402 Settlement.
+          StellarSuite connects three decentralized applications into one cohesive ecosystem: Rotating Community Savings (Ajo), Telegram Social Remittances (StellarDrop), and Autonomous HTTP 402 AI Micropayments (PromptSip) — all built and verified on Stellar Testnet.
         </p>
+
+        <div className="flex flex-wrap justify-center gap-3 pt-2">
+          <Button onClick={scrollToProjects} className="h-10 px-5 gap-2 bg-signal text-signal-foreground font-semibold text-xs hover:bg-signal/90 shadow-xs">
+            Explore All 3 Projects <ArrowRight className="size-3.5" />
+          </Button>
+          <Button variant="outline" asChild className="h-10 px-5 text-xs font-medium border-border hover:bg-secondary">
+            <a href="https://stellar.expert/explorer/testnet/contract/CB2U4ZI42D4NVHUXKG4ZZRAOYESU65QIWY47EZX5HMRQVJMDKAKWAK2N" target="_blank" rel="noreferrer">
+              View Soroban Contract <ExternalLink className="size-3" />
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      {/* METRICS & PROOF STRIP */}
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4 border-y border-border">
+        <div className="p-4 rounded-lg bg-card border border-border text-center">
+          <p className="text-2xl font-bold text-signal font-mono">3</p>
+          <p className="text-xs text-muted-foreground mt-0.5 font-medium">Independent Live Projects</p>
+        </div>
+        <div className="p-4 rounded-lg bg-card border border-border text-center">
+          <p className="text-2xl font-bold text-foreground font-mono">$0.00001</p>
+          <p className="text-xs text-muted-foreground mt-0.5 font-medium">Stellar Tx Network Fee</p>
+        </div>
+        <div className="p-4 rounded-lg bg-card border border-border text-center">
+          <p className="text-2xl font-bold text-signal font-mono">0ms</p>
+          <p className="text-xs text-muted-foreground mt-0.5 font-medium">HTTP 402 Stream Latency</p>
+        </div>
+        <div className="p-4 rounded-lg bg-card border border-border text-center">
+          <p className="text-2xl font-bold text-foreground font-mono">100%</p>
+          <p className="text-xs text-muted-foreground mt-0.5 font-medium">Soroban Verified on Testnet</p>
+        </div>
       </section>
 
       {/* THREE EQUAL PROJECT SHOWCASE CARDS */}
-      <section className="space-y-6">
+      <section id="projects" className="space-y-6 scroll-mt-24">
         <div className="flex items-center justify-between border-b border-border pb-3">
-          <h2 className="text-xl font-bold tracking-tight text-foreground">The Three Projects</h2>
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground">The Three Pillars</h2>
+            <p className="text-xs text-muted-foreground mt-0.5">Every project runs independently and connects into the shared Stellar ecosystem.</p>
+          </div>
           <span className="font-mono text-xs text-signal font-semibold">ALL LIVE ON STELLAR TESTNET</span>
         </div>
 
@@ -400,6 +469,58 @@ function UnifiedHomePage({ onSelectProject }: { onSelectProject: (p: ActivePage)
         </div>
       </section>
 
+      {/* WHY STELLAR & SOROBAN COMPARISON TABLE */}
+      <section className="rounded-xl border border-border bg-card p-8 space-y-6">
+        <div className="border-b border-border pb-4">
+          <span className="rounded bg-signal-soft px-2.5 py-1 font-mono text-[10px] text-signal font-bold uppercase">
+            Institutional Architecture
+          </span>
+          <h3 className="text-2xl font-bold text-foreground mt-2">Why Stellar &amp; Soroban Power StellarSuite</h3>
+          <p className="text-xs text-muted-foreground mt-1 max-w-2xl leading-relaxed">
+            Traditional payment networks and legacy blockchains fail at community micro-finance and high-frequency AI payments. Stellar provides the exact primitives required:
+          </p>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs border border-border divide-y divide-border">
+            <thead className="bg-secondary text-foreground font-semibold">
+              <tr>
+                <th className="p-3">Capability</th>
+                <th className="p-3">Traditional Rails (Visa / Stripe)</th>
+                <th className="p-3">Ethereum / EVM</th>
+                <th className="p-3 text-signal font-bold">StellarSuite (Stellar &amp; Soroban)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border text-muted-foreground">
+              <tr>
+                <td className="p-3 font-semibold text-foreground">Transaction Cost</td>
+                <td className="p-3">$0.30 + 2.9% (Card Floor)</td>
+                <td className="p-3">$2.50 – $25.00 Gas</td>
+                <td className="p-3 text-signal font-bold">$0.00001 (Fractions of a cent)</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold text-foreground">AI Micropayments</td>
+                <td className="p-3">Impossible (High minimums)</td>
+                <td className="p-3">Impractical for per-prompt</td>
+                <td className="p-3 text-signal font-bold">Native RFC HTTP 402 with 0ms Streaming</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold text-foreground">Off-Ramping to Fiat</td>
+                <td className="p-3">Slow ACH (2–3 days)</td>
+                <td className="p-3">Centralized Exchanges (CEX)</td>
+                <td className="p-3 text-signal font-bold">SEP-10 / SEP-24 Local Anchor Direct Payouts</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold text-foreground">Decentralized Savings</td>
+                <td className="p-3">Informal &amp; high theft risk</td>
+                <td className="p-3">High gas per cycle</td>
+                <td className="p-3 text-signal font-bold">Soroban Collateral Vaults with Ajo Score</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* REPOSITORY & ARCHITECTURE MATRIX */}
       <section className="rounded-xl border border-border bg-card p-8">
         <h3 className="text-lg font-bold text-foreground">How the Three Projects Interoperate</h3>
@@ -422,6 +543,9 @@ function UnifiedHomePage({ onSelectProject }: { onSelectProject: (p: ActivePage)
           </div>
         </div>
       </section>
+    </div>
+  );
+}
     </div>
   );
 }

@@ -15,7 +15,8 @@
  */
 
 @theme inline {
-  --font-sans: 'Caveat', 'Dancing Script', cursive, sans-serif;
+  --font-sans: "Times New Roman", Times, Georgia, serif;
+  --font-serif: "Times New Roman", Times, Georgia, serif;
   --font-cursive: 'Caveat', 'Dancing Script', cursive;
   --font-mono: 'JetBrains Mono', monospace;
   --radius-sm: 0.25rem;
@@ -130,12 +131,22 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: 'Caveat', 'Dancing Script', cursive, sans-serif;
-    font-size: 1.15rem;
-    line-height: 1.5;
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
   }
 
-  code, pre, kbd, .font-mono {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Times New Roman", Times, Georgia, serif;
+  }
+
+  /* Dedicated class when cursive accent or signature flourish is needed */
+  .font-cursive {
+    font-family: 'Caveat', 'Dancing Script', cursive !important;
+  }
+
+  code, pre, kbd, .font-mono, .font-mono * {
     font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
   }
 }
