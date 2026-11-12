@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project decisions
+
+- Keep PromptSip's experience as a browser-side demo until real Stellar settlement and AI services are configured, so sandbox activity cannot be mistaken for live payments or responses.
